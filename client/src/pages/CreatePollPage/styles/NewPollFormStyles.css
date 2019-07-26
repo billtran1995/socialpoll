@@ -1,0 +1,22 @@
+.NewPollForm-addChoicebtn,
+.NewPollForm-removeChoicebtn {
+  cursor: pointer;
+  float: right;
+}
+
+.NewPollForm-addChoicebtn {
+  margin: 0.25em 1.5em 0 0;
+}
+
+.NewPollForm-removeChoicebtn {
+  margin: 0.25em 0.25em 0 0;
+}
+
+.NewPollForm-addChoicebtn:hover,
+.NewPollForm-removeChoicebtn:hover {
+  transform: scale(2);
+}
+
+.NewPollForm {
+  margin-bottom: 3rem;
+}

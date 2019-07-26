@@ -1,0 +1,59 @@
+@import url("https://fonts.googleapis.com/css?family=Righteous&display=swap");
+
+.App {
+  overflow: hidden;
+}
+
+.bg {
+  min-height: 100%;
+  min-width: 1024px;
+
+  width: 100%;
+  height: auto;
+
+  top: 0;
+  left: 0;
+  position: fixed;
+  background-image: linear-gradient(#77a6f7, #d0dbf5);
+  z-index: -1;
+}
+
+.segment,
+.card {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23) !important;
+  /* box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22) !important; */
+}
+
+.menu {
+  background-color: #ffffff !important;
+}
+
+.brand a {
+  font-family: "Righteous", cursive;
+  font-size: 2em;
+}
+
+.ui.menu:not(.secondary):not(.text):not(.tabular):not(.borderless)
+  > .container
+  > .item:not(.right):not(.borderless):first-child {
+  border-left: none;
+}
+
+.ui .menu .item::before {
+  background: none;
+}
+
+.ui.link.menu .item:hover,
+.ui.menu .dropdown.item:hover,
+.ui.menu .link.item:hover,
+.ui.menu a.item:hover,
+.ui.menu .active.item {
+  background: none;
+}
+
+.ui.menu .item {
+  padding: 0.5em 1.14285714em !important;
+}
+
+/* #efe2ba  #c5cbe3 #f13c20 #d79922 #4056a1*/
+/* #00887a #ffccbc #ffffff #d3e3fc #77a6f7 */

@@ -1,0 +1,10 @@
+.PageContent {
+  margin-top: 10rem;
+  margin-bottom: 10rem;
+}
+
+@media (max-width: 764px) {
+  .PageContent {
+    margin-top: 15rem;
+  }
+}

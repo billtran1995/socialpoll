@@ -1,0 +1,54 @@
+.PollItem {
+  margin-bottom: 3rem;
+}
+
+.PollItem-iconbtns {
+  margin-right: 10px;
+}
+
+.PollItem-iconbtn {
+  cursor: pointer;
+  float: right;
+  min-height: 1em;
+  outline: none;
+  border: none;
+  vertical-align: baseline;
+  color: rgba(0, 0, 0, 0.6);
+  margin: 0 0.25em 0 0;
+  padding: 0.78571429em 1.5em 0.78571429em;
+  line-height: 1em;
+  text-align: center;
+  border-radius: 0.28571429rem;
+  margin-right: 0;
+  margin-left: 0.25em;
+  background-color: transparent;
+}
+
+.PollItem-iconbtn,
+svg {
+  transition: 0.2s ease-in-out;
+}
+
+.PollItem-iconbtn:hover {
+  background-color: #e9ecef;
+}
+
+.PollItem-iconbtn:hover svg {
+  transform: scale(2);
+}
+
+.PollItem .info {
+  color: #5bc0de;
+}
+
+.PollItem .star.active {
+  color: #ffc107;
+}
+
+.PollItem .thumbsup.active {
+  color: #20c997;
+}
+
+.PollItem .vote.active {
+  color: #dc3545;
+}

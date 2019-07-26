@@ -1,0 +1,23 @@
+{
+  "name": "socialpoll",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start-server": "nodemon index",
+    "start-client": "yarn --cwd client start",
+    "start-app": "concurrently \"npm run start-server\" \"npm run start-client\""
+  },
+  "author": "Bill Tran",
+  "license": "MIT",
+  "dependencies": {
+    "@hapi/boom": "^7.4.2",
+    "concurrently": "^4.1.1",
+    "express": "^4.17.1",
+    "express-jwt": "^5.3.1",
+    "helmet": "^3.18.0",
+    "jwks-rsa": "^1.6.0",
+    "mongoose": "^5.6.4",
+    "morgan": "^1.9.1"
+  }
+}
