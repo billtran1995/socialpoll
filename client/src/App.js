@@ -15,6 +15,7 @@ import Callback from "./pages/Callback";
 import Landing from "./pages/LandingPage";
 import PollListPage from "./pages/PollsListPage";
 import CreatePollPage from "./pages/CreatePollPage";
+import PollStatsPage from "./pages/PollStatsPage";
 
 const App = () => {
   const auth = useContext(AuthContext);
@@ -69,17 +70,13 @@ const App = () => {
                   <CreatePollPage userId={user._id} {...props} />
                 )}
               />
-              {/* <SecuredRoute
+              <SecuredRoute
                 exact
                 path="/poll/info/:id"
                 checkingSession={checkingSession}
-                render={props => (
-                  <PollProvider>
-                    <PollInfoContainer {...props} />
-                  </PollProvider>
-                )}
+                render={props => <PollStatsPage {...props} />}
               />
-              <SecuredRoute
+              {/* <SecuredRoute
                 exact
                 path="/create-poll"
                 checkingSession={checkingSession}

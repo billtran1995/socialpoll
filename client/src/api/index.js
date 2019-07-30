@@ -1,7 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "/api/";
-const POLLS_URL = `${BASE_URL}polls`;
+const POLLS_URL = `/api/polls`;
 
 let pollsApi;
 
@@ -17,37 +16,41 @@ const initApis = token => {
 export default initApis;
 
 export const createPoll = async body => {
-  return pollsApi.post("/api/polls/createPoll", body);
+  return pollsApi.post(`${POLLS_URL}/createPoll`, body);
 };
 
 export const getPolls = async query => {
-  return pollsApi.get(`/api/polls${query}`);
+  return pollsApi.get(`${POLLS_URL}${query}`);
 };
 
 export const getPoll = async id => {
-  return pollsApi.get(`/${id}`);
+  return pollsApi.get(`${POLLS_URL}/${id}`);
 };
 
 export const vote = async body => {
-  return pollsApi.post("/api/polls/vote", body);
+  return pollsApi.post(`${POLLS_URL}/vote`, body);
 };
 
 export const like = async (pollId, body) => {
-  return pollsApi.post(`/api/polls/${pollId}/like`, body);
+  return pollsApi.post(`${POLLS_URL}/${pollId}/like`, body);
 };
 
 export const unlike = async (pollId, body) => {
-  return pollsApi.post(`/api/polls/${pollId}/unlike`, body);
+  return pollsApi.post(`${POLLS_URL}/${pollId}/unlike`, body);
 };
 
 export const follow = async (pollId, body) => {
-  return pollsApi.post(`/api/polls/${pollId}/follow`, body);
+  return pollsApi.post(`${POLLS_URL}/${pollId}/follow`, body);
 };
 
 export const unfollow = async (pollId, body) => {
-  return pollsApi.post(`/api/polls/${pollId}/unfollow`, body);
+  return pollsApi.post(`${POLLS_URL}/${pollId}/unfollow`, body);
+};
+
+export const getStatistic = async (pollId, year) => {
+  return pollsApi.get(`${POLLS_URL}/${pollId}/getStat?year=${year}`);
 };
 
 export const createComment = async (pollId, body) => {
-  return pollsApi.post(`/${pollId}/comment`, body);
+  return pollsApi.post(`${POLLS_URL}/${pollId}/comment`, body);
 };

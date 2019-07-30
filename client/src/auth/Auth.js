@@ -7,6 +7,7 @@ class Auth {
     domain: process.env.REACT_APP_AUTH_DOMAIN,
     clientID: process.env.REACT_APP_AUTH_CLIENT_ID,
     redirectUri: process.env.REACT_APP_AUTH_REDIRECT_URI,
+    audience: process.env.REACT_APP_AUTH_AUDIENCE,
     responseType: "token id_token",
     scope: "openid profile"
   });

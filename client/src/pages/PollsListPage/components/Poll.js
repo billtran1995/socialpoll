@@ -130,6 +130,7 @@ const Poll = ({ poll, records, history }) => {
                   <Label>{poll.totalVotes} Total Votes</Label>
                   <Label>{poll.totalLikes} Likes</Label>
                   <Label>{poll.totalFollowings} Followings</Label>
+                  <Label>{poll.comments.length} Comments</Label>
                 </Item.Extra>
               </div>
               <div className="PollItem-iconbtns">

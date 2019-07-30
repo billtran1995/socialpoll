@@ -2,14 +2,10 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 
 import useCreatePollFormState from "./state";
-import { useAuth0 } from "../../auth/auth0-wrapper";
+
 import NewPollForm from "./components/NewPollForm";
 
-const NewPollFormContainer = ({ history }) => {
-  const {
-    user: { _id }
-  } = useAuth0();
-
+const NewPollFormContainer = ({ userId, history }) => {
   const [
     question,
     choiceGroup,
@@ -21,7 +17,7 @@ const NewPollFormContainer = ({ history }) => {
     handleSubmit,
     onChoiceChange,
     backToFilling
-  ] = useCreatePollFormState(history, _id);
+  ] = useCreatePollFormState(history, userId);
 
   return (
     <NewPollForm

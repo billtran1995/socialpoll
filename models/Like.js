@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const { ObjectId } = require("mongoose").Types;
 
 const likeSchema = new Schema(
   {
@@ -14,5 +15,39 @@ const likeSchema = new Schema(
   },
   { timestamps: true }
 );
+
+class LikeClass {
+  static async getLikeStats(month, year, pollId) {
+    const monthStats = await this.aggregate([
+      {
+        $group: {
+          _id: {
+            month: { $month: "$createdAt" },
+            year: { $year: "$createdAt" },
+            pollId: "$pollId"
+          },
+          numberOfLikes: { $sum: 1 }
+        }
+      },
+      {
+        $match: {
+          "_id.month": +month,
+          "_id.year": +year,
+          "_id.pollId": ObjectId(pollId)
+        }
+      },
+      {
+        $project: {
+          _id: 0,
+          numberOfLikes: 1
+        }
+      }
+    ]);
+
+    return monthStats;
+  }
+}
+
+likeSchema.loadClass(LikeClass);
 
 module.exports = mongoose.model("Like", likeSchema);

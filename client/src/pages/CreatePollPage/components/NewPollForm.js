@@ -52,6 +52,11 @@ const NewPollForm = ({
                   return <List.Item key={textNumber}>{choice}</List.Item>;
                 })}
               </List>
+              <p>
+                <span style={{ color: "red" }}>*Note:</span> After submitting,
+                you will not be able to edit again. Please make sure everything
+                looks right.
+              </p>
             </>
           ) : (
             <>

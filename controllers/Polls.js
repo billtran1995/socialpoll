@@ -16,14 +16,14 @@ const validateQuestion = question => {
   return (
     question.length > 0 &&
     question.length <= 1000 &&
-    /^[a-zA-Z0-9,.? ]+$/.test(question)
+    /^[a-zA-Z0-9,.?' ]+$/.test(question)
   );
 };
 
 const validateChoices = choices => {
   return (
     choices.every(choice => choice.choice !== "") &&
-    choices.every(choice => /^[a-zA-Z0-9,.? ]+$/.test(choice.choice)) &&
+    choices.every(choice => /^[a-zA-Z0-9,.?' ]+$/.test(choice.choice)) &&
     choices.every(choice => choice.choice.length <= 90)
   );
 };
@@ -63,6 +63,10 @@ exports.getPoll = async (req, res, next) => {
 
   try {
     const poll = await Poll.findById(pollId)
+      .populate({
+        path: "author",
+        select: "nickName"
+      })
       .populate({
         path: "comments",
         select: "-__v -updatedAt",
@@ -441,6 +445,7 @@ exports.getPolls = async (req, res, next) => {
 
 exports.getStatistic = async (req, res, next) => {
   const { pollId } = req.params;
+  const { month, year } = req.query;
 
   try {
     if (!(await checkIfPollExists(pollId))) {
@@ -453,26 +458,19 @@ exports.getStatistic = async (req, res, next) => {
     stat.totalVotes = poll.totalVotes;
     stat.totalLikes = poll.totalLikes;
     stat.totalFollowings = poll.totalFollowings;
+    // stat.month = month;
+    // stat.year = year;
 
-    let monthlyVoteStats = await Vote.aggregate([
-      {
-        $group: {
-          _id: { month: { $month: "$createdAt" }, votedChoice: "$votedChoice" },
-          numberOfVotes: { $sum: 1 }
-        }
-      },
-      {
-        $project: {
-          _id: 0,
-          month: "$_id.month",
-          votedChoice: "$_id.votedChoice",
-          numberOfVotes: 1
-        }
-      }
-    ]);
+    let monthlyVoteStats = await Vote.getVoteStats(month, year, pollId);
 
-    stat.monthlyStat = monthlyVoteStats;
-    res.status(200).json({ hasMore, polls, count: polls.length });
+    // let monthlyLikeStats = await Like.getLikeStats(month, year, pollId);
+
+    // let monthlyFollowStats = await Follow.getFollowStats(month, year, pollId);
+
+    stat.monthlyVoteStats = monthlyVoteStats;
+    // stat.monthlyLikeStats = monthlyLikeStats;
+    // stat.monthlyFollowStats = monthlyFollowStats;
+    res.status(200).json(stat);
   } catch (err) {
     console.error(err);
     return next(boom.badImplementation("Internal server error occurred"));

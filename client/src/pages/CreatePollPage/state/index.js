@@ -40,7 +40,7 @@ const useCreatePollFormState = (history, userId) => {
     let err = new Set();
 
     if (question) {
-      if (!/^[a-zA-Z0-9,.? ]+$/.test(question)) {
+      if (!/^[a-zA-Z0-9,.?' ]+$/.test(question)) {
         err.add("Only alphanumerics and ,.? are allowed.");
       }
 
@@ -54,7 +54,7 @@ const useCreatePollFormState = (history, userId) => {
     }
 
     if (choiceGroup.every(choice => choice !== "")) {
-      if (choiceGroup.some(choice => !/^[a-zA-Z0-9,.? ]+$/.test(choice))) {
+      if (choiceGroup.some(choice => !/^[a-zA-Z0-9,.?' ]+$/.test(choice))) {
         err.add("Only alphanumerics and ,.? are allowed.");
       }
 
