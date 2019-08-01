@@ -33,7 +33,10 @@ const MonthlyStat = ({ poll, calculatePercentage }) => {
     getStatistic(poll._id, year).then(({ data, status }) => {
       if (status === 200) {
         setStat(data);
+        return;
       }
+
+      throw new Error("Server Error: Unable to get stat");
     });
   }
 

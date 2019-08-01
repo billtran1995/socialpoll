@@ -9,6 +9,7 @@ import Navbar from "./pages/shared/Navbar";
 import SecuredRoute from "./pages/shared/SecuredRoute";
 import PageContent from "./pages/shared/PageContent";
 import "./App.css";
+import "./pages/styles/emoji.min.css";
 
 // Pages
 import Callback from "./pages/Callback";
@@ -16,6 +17,7 @@ import Landing from "./pages/LandingPage";
 import PollListPage from "./pages/PollsListPage";
 import CreatePollPage from "./pages/CreatePollPage";
 import PollStatsPage from "./pages/PollStatsPage";
+import NotFoundPage from "./pages/404Page";
 
 const App = () => {
   const auth = useContext(AuthContext);
@@ -76,14 +78,7 @@ const App = () => {
                 checkingSession={checkingSession}
                 render={props => <PollStatsPage {...props} />}
               />
-              {/* <SecuredRoute
-                exact
-                path="/create-poll"
-                checkingSession={checkingSession}
-                render={props => (
-                  <NewPollFormContainer userId={user._id} {...props} />
-                )}
-              /> */}
+              <Route path="/*" component={NotFoundPage} />
             </Switch>
           </UserContext.Provider>
         </PageContent>

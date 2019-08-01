@@ -32,7 +32,10 @@ const PollStatsContainer = ({ match }) => {
     getPoll(match.params.id).then(({ data, status }) => {
       if (status === 200) {
         setPoll(data);
+        return;
       }
+
+      throw new Error("Server Error: Unable to load poll");
     });
     // eslint-disable-next-line
   }, []);

@@ -1,0 +1,21 @@
+@media (max-width: 480px) {
+  .notfound {
+    transform: translate(12%, 150%);
+  }
+  .ec.ec-disappointed-relieved {
+    font-size: 8em;
+  }
+  .notfound-message {
+    font-size: 4em;
+  }
+}
+
+.notfound {
+  transform: translate(25%, 180%);
+}
+.ec.ec-disappointed-relieved {
+  font-size: 10em;
+}
+.notfound-message {
+  font-size: 6em;
+}

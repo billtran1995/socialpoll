@@ -20,9 +20,15 @@ const CreateCommentForm = ({ poll, updatePoll }) => {
     createComment(poll._id, { userId: user._id, body: comment }).then(
       ({ data, status }) => {
         if (status === 200) {
-          let newPoll = { ...poll, comments: [...poll.comments, data.comment] };
+          let newPoll = {
+            ...poll,
+            comments: [...poll.comments, data]
+          };
           updatePoll(newPoll);
+          return;
         }
+
+        throw new Error("Server Error: Unable to create comment");
       }
     );
   };

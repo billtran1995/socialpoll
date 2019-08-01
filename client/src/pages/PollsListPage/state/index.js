@@ -24,9 +24,10 @@ const usePollListState = paramObj => {
         });
 
         setPolls(newPolls);
+        return;
       }
 
-      // Todo: handle fail submit
+      throw new Error("Server Error: Unable to vote");
     });
   }
 
@@ -42,9 +43,10 @@ const usePollListState = paramObj => {
         });
 
         setPolls(newPolls);
+        return;
       }
 
-      // Todo: handle error
+      throw new Error("Server Error: Unable to like");
     });
   }
 
@@ -60,7 +62,10 @@ const usePollListState = paramObj => {
         });
 
         setPolls(newPolls);
+        return;
       }
+
+      throw new Error("Server Error: Unable to unlike");
     });
   }
 
@@ -76,7 +81,10 @@ const usePollListState = paramObj => {
         });
 
         setPolls(newPolls);
+        return;
       }
+
+      throw new Error("Server Error: Unable to follow");
     });
   }
 
@@ -97,7 +105,10 @@ const usePollListState = paramObj => {
         }
 
         setPolls(newPolls);
+        return;
       }
+
+      throw new Error("Server Error: Unable to unfollow");
     });
   }
 
@@ -110,7 +121,10 @@ const usePollListState = paramObj => {
         setRecords([...data.records]);
         setHasMore(data.hasMore);
         setIsLoading(false);
+        return;
       }
+
+      throw new Error("Server Error: Unable to filter");
     });
   }
 
@@ -131,7 +145,10 @@ const usePollListState = paramObj => {
           setRecords([...records, ...data.records]);
           setHasMore(data.hasMore);
           setIsLoading(false);
+          return;
         }
+
+        throw new Error("Server Error: Unable to load polls");
       });
     }
     // eslint-disable-next-line
