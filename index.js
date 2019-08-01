@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(logger("combined"));
 
-// app.use(checkJwt);
+app.use(checkJwt);
 
 app.use("/api/polls", require("./routers/Polls"));
 app.use("/api/user", require("./routers/User"));

@@ -4,9 +4,6 @@ import InternalErrorPage from "../500Page";
 
 import "../styles/PageContentStyles.css";
 
-// const PageContent = ({ children }) => (
-//   <div className="PageContent">{children}</div>
-// );
 class PageContent extends React.Component {
   state = {
     hasError: false

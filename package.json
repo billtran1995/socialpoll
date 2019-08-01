@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engine": {
+    "node": "10.14.2",
+    "npm": "6.5.0"
+  },
   "scripts": {
     "start-server": "nodemon index",
     "start-client": "yarn --cwd client start",
