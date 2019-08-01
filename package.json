@@ -8,9 +8,11 @@
     "npm": "6.5.0"
   },
   "scripts": {
+    "start": "node index",
     "start-server": "nodemon index",
     "start-client": "yarn --cwd client start",
-    "start-app": "concurrently \"npm run start-server\" \"npm run start-client\""
+    "start-app": "concurrently \"npm run start-server\" \"npm run start-client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "author": "Bill Tran",
   "license": "MIT",
