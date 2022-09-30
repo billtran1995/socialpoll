@@ -17,7 +17,7 @@
   "author": "Bill Tran",
   "license": "MIT",
   "dependencies": {
-    "@hapi/boom": "^7.4.2",
+    "@hapi/boom": "^7.4.11",
     "concurrently": "^4.1.1",
     "express": "^4.17.1",
     "express-jwt": "^5.3.1",
